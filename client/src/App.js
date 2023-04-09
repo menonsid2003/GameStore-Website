@@ -1,5 +1,8 @@
 
 import './App.css';
+import React from 'react'
+import {useState} from 'react';
+import Axios from 'axios';
 
 function App() {
 
@@ -13,9 +16,9 @@ function App() {
       vgName: vgName,
       vgYear: vgYear,
       vgSysID: vgSysID,
-      vgSKU, vgSKU
+      vgSKU: vgSKU
     }).then(() => {
-        console.log("success")
+        console.log("success");
     })
   };
 
