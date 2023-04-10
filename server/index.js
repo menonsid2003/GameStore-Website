@@ -8,9 +8,9 @@ app.use(express.json());
 
 const db = mysql.createConnection({
     user: "root",
-    host: "local",
+    host: "localhost",
     password: "",
-    database: "VideoGame",
+    database: "videogame",
 });
 
 app.post('/create', (req, res) => {
@@ -20,7 +20,7 @@ app.post('/create', (req, res) => {
     const SKU = req.body.vgSKU;
 
     db.query(
-        "INSERT INTO Videogame(Name,Year,sysID,SKU) VALUES (?,?,?,?)",
+        "INSERT INTO videogames(Name,Year,sysID,SKU) VALUES (?,?,?,?)",
         [name,year,sysID,SKU],
         (err, result) => {
             if (err){
