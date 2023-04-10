@@ -10,18 +10,23 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    database: "videogame",
+    database: "database_project_final",
 });
 
 app.post('/create', (req, res) => {
     const name = req.body.vgName;
     const year = req.body.vgYear;
+    const genre = req.body.vgGenre
     const sysID = req.body.vgSysID;
+    const rating = req.body.vgRating;
+    const price = req.body.vgPrice;
+    const publID = req.body.vgPublID;
     const SKU = req.body.vgSKU;
 
+
     db.query(
-        "INSERT INTO videogames(Name,Year,sysID,SKU) VALUES (?,?,?,?)",
-        [name,year,sysID,SKU],
+        "INSERT INTO video_game(title,year_of_release,genre,systemID,rating,price,publisherID,sku) VALUES (?,?,?,?,?,?,?,?)",
+        [name,year,genre,sysID,rating,price,publID,SKU],
         (err, result) => {
             if (err){
                 console.log(err);
