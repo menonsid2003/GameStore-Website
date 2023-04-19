@@ -1,3 +1,4 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Inventory from "./pages/Inventory";
 import Add from "./pages/Add";

@@ -9,7 +9,7 @@ const Inventory = () => {
     useEffect(() => {
         const fetchAllGames = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/inventory")
+                const res = await axios.get("http://localhost:8800/api/inventory")
                 setInventory(res.data);
             } catch (err) {
                 console.log(err);
@@ -21,7 +21,7 @@ const Inventory = () => {
     useEffect(() => {
         const fetchAllConsoles = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/consoles")
+                const res = await axios.get("http://localhost:8800/api/consoles")
                 setConsoles(res.data);
             } catch (err) {
                 console.log(err);
