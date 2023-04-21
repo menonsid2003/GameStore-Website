@@ -3,6 +3,7 @@ import mysql from "mysql";
 import cors from 'cors';
 import inventoryRoute from "./routes/inventory.js"
 import consoleRoute from "./routes/consoles.js"
+import authRoutes from "./routes/auth.js"
 
 const app = express()
 
@@ -19,6 +20,8 @@ app.use(cors())
 app.get("/", (req, res) => {
     res.json("hello this is the backend");
 })
+
+app.use("/api/auth", authRoutes);
 
 app.use("/api/inventory", inventoryRoute);
 
