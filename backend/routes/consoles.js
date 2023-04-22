@@ -1,14 +1,13 @@
-import express from 'express'
-import { db } from "../db.js"
+import express from "express";
+import { getConsoles, getConsole, deleteConsole, updateConsole } from "../controllers/consoles.js";
 
 const router = express.Router()
 
-router.get("/", (req, res) => {
-    const q = "SELECT * FROM consoles"
-    db.query(q, (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data);
-    })
-})
+router.get("/", getConsoles)
+router.get("/:systemID", getConsole)
+router.post("/",)
+router.delete("/:systemID", deleteConsole)
+router.put("/:systemID", updateConsole)
 
-export default router;
+
+export default router

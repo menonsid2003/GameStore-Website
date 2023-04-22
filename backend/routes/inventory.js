@@ -1,14 +1,13 @@
-import express from 'express'
-import { db } from "../db.js"
+import express from "express";
+import { deleteGame, getGame, getGames, updateGame } from "../controllers/inventory.js";
 
 const router = express.Router()
 
-router.get("/", (req, res) => {
-    const q = "SELECT * FROM video_game"
-    db.query(q, (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data);
-    })
-})
+router.get("/", getGames)
+router.get("/:sku", getGame)
+router.post("/",)
+router.delete("/:sku", deleteGame)
+router.put("/:sku", updateGame)
 
-export default router;
+
+export default router

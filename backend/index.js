@@ -4,6 +4,7 @@ import cors from 'cors';
 import inventoryRoute from "./routes/inventory.js"
 import consoleRoute from "./routes/consoles.js"
 import authRoutes from "./routes/auth.js"
+import cookieParser from 'cookie-parser';
 
 const app = express()
 
@@ -15,6 +16,7 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
 
 app.get("/", (req, res) => {
