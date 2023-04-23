@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import "./Inventory.scss"
+import { AuthContext } from '../context/authContext.js';
 
 const Inventory = () => {
+    const { currentUser } = useContext(AuthContext);
     const [inventory, setInventory] = useState([]);
-    const [consoles, setConsoles] = useState([]);
+    //const [consoles, setConsoles] = useState([]);
 
     useEffect(() => {
         const fetchAllGames = async () => {
@@ -19,21 +21,20 @@ const Inventory = () => {
         fetchAllGames();
     }, []);
 
-    useEffect(() => {
-        const fetchAllConsoles = async () => {
-            try {
-                const res = await axios.get("/consoles")
-                setConsoles(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchAllConsoles();
-    }, []);
+    /*    useEffect(() => {
+           const fetchAllConsoles = async () => {
+               try {
+                   const res = await axios.get("/consoles")
+                   setConsoles(res.data);
+               } catch (err) {
+                   console.log(err);
+               }
+           };
+           fetchAllConsoles();
+       }, []); */
 
     return (
         <div>
-            <h1>Gamestop but Awesome</h1>
             <nav className="product-filter">
 
                 <h1>Games</h1>
@@ -43,6 +44,9 @@ const Inventory = () => {
                     <div className="collection-sort">
                         <label>Filter by:</label>
                         <select>
+                            <option value="/">All Games</option>
+                            <option value="/">All Games</option>
+                            <option value="/">All Games</option>
                             <option value="/">All Games</option>
                         </select>
                     </div>
@@ -70,12 +74,11 @@ const Inventory = () => {
                                         <h3>${video_game.price}</h3>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     ))}
             </div>
-            <button><Link to="/add">Add new game</Link></button>
+            {(currentUser !== null && currentUser.type === "EMP") && <button><Link to="/add">Add new game</Link></button>}
         </div>
     )
 };

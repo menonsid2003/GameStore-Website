@@ -1,15 +1,13 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider, Outlet, } from "react-router-dom";
-//BrowserRouter, Routes, Route, 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Inventory from "./pages/Inventory";
-//import Add from "./pages/Add";
-//import Update from "./pages/Update";
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Single from './pages/Single';
+import Add from './pages/Add';
 import "./style.scss";
 
 const Layout = () => {
@@ -48,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/add",
+    element: <Add />
   },
 ]);
 

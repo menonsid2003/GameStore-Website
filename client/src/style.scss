@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     background-color: black;
-    position: absolute;
 
     .container {
         position: relative;
@@ -20,12 +19,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: slateblue;
+            background-color: black;
             height: 100vh;
 
             h1 {
                 font-size: 30px;
-                color: lavender;
+                color: rgba(246, 208, 59, 255);
                 margin-bottom: 20px;
             }
 
@@ -35,7 +34,7 @@
                 align-items: center;
                 padding: 30px;
                 gap: 10px;
-                background-color: white;
+                background-color: #BAA242;
                 width: 200px;
 
                 input {
@@ -75,7 +74,7 @@
 
                 .logo {
                     img {
-                        width: 200px;
+                        width: 250px;
                     }
                 }
 

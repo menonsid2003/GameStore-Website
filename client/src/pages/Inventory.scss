@@ -1,13 +1,18 @@
 .product-filter {
     display: flex;
     color: white;
+    //border: 1px solid white;
+    justify-content: space-between;
 
     h1 {
         flex-grow: 1;
+        position: relative;
+        bottom: 50px;
     }
 
     .sort {
         display: flex;
+        gap: 10px;
     }
 
     .collection-sort {
@@ -61,7 +66,7 @@
             .info {
                 justify-content: center;
                 //border: 1px solid green;
-                height: 300px;
+                height: 150px;
                 max-width: auto;
                 margin-top: auto;
                 //margin-left: 5px;
@@ -89,13 +94,13 @@
                 h3 {
                     //border: 1px solid white;
                     position: absolute;
-                    bottom: 145px;
+                    top: 65px;
                     left: 0;
                     right: 0;
 
                     line-height: 100%;
                     font-size: 30px;
-                    color: rgba(246, 208, 59, 255)
+                    color: rgba(246, 208, 59, 255);
                 }
             }
         }
