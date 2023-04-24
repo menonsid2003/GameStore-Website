@@ -1,0 +1,34 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    min-height: calc(100vh - 350px);
+
+
+    .notLoggedIn {
+        color: white;
+        flex: 1 0 auto;
+        padding: 150px;
+        text-align: center;
+    }
+
+    .Employees {
+        color: white;
+        flex: 1 0 auto;
+        padding: 20px;
+
+        h1 {}
+    }
+}
+
+.foot {
+    height: auto;
+    //margin-top: auto;
+}

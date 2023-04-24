@@ -1,0 +1,168 @@
+.product-filter {
+    display: flex;
+    color: white;
+    //border: 1px solid white;
+    justify-content: space-between;
+
+    h1 {
+        flex-grow: 1;
+        position: relative;
+        bottom: 50px;
+    }
+
+    .sort {
+        display: flex;
+        gap: 10px;
+    }
+
+    .collection-sort {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.Inventory {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    margin-left: 50px;
+    justify-content: center;
+    column-gap: 100px;
+    position: relative;
+    top: 30px;
+
+    .video_game {
+        .card {
+            position: relative;
+            z-index: 1;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            width: 330px;
+            height: 450px;
+            text-align: center;
+            border-radius: 10px 10px 10px 10px;
+            -moz-border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: none;
+            margin-right: 10px;
+            margin-top: 30px;
+            margin-left: 10px;
+
+
+            img {
+                position: relative;
+                z-index: 0;
+                object-fit: cover;
+                padding: 10px;
+                overflow-clip-margin: content-box;
+                box-sizing: border-box;
+                max-width: auto;
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .info {
+                justify-content: center;
+                height: 150px;
+                max-width: auto;
+                margin-top: auto;
+                color: white;
+                position: relative;
+                bottom: 10px;
+
+
+                h2 {
+                    text-align: center;
+                    justify-content: center;
+                    overflow-wrap: break-word;
+                    line-height: 95%;
+                }
+
+                p {
+                    position: relative;
+                    bottom: 10px;
+                    line-height: 1%;
+                    font-size: 12px;
+                }
+
+                h3 {
+                    position: absolute;
+                    top: 65px;
+                    left: 0;
+                    right: 0;
+                    line-height: 100%;
+                    font-size: 30px;
+                    color: rgba(246, 208, 59, 255);
+                }
+            }
+        }
+
+        .card:hover {
+            position: relative;
+            z-index: 2;
+            transform-origin: center;
+            transform: scale(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.0);
+            -webkit-box-shadow: 0px 0px 22px -4px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 0px 0px 22px -4px rgba(255, 255, 255, 1);
+            box-shadow: 0px 0px 22px -4px rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    gap: 10px;
+
+    .Button {
+
+        position: relative;
+        top: 0px;
+
+        a:link {
+            text-decoration: none;
+        }
+
+
+        a:visited {
+            text-decoration: none;
+        }
+
+
+        a:hover {
+            text-decoration: none;
+        }
+
+
+        a:active {
+            text-decoration: none;
+        }
+
+        //transform: scale(0.7);
+        display: inline-block;
+        align-items: center;
+        outline: 0;
+        cursor: pointer;
+        border: 2px solid white;
+        border-radius: 3px;
+        color: black;
+        background: rgba(246, 208, 59, 255);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 28px;
+        padding: 4px 10px;
+        text-align: center;
+        transition-duration: .15s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .Button:hover {
+        color: rgba(246, 208, 59, 255);
+        background: black;
+    }
+}

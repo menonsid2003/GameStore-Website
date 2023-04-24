@@ -1,24 +1,83 @@
-import './App.css';
 import React from 'react'
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Inventory from './components/Inventory';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Inventory from "./pages/Inventory";
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Single from './pages/Single';
+import Add from './pages/Add';
+import Employees from './pages/Employees';
+import "./style.scss";
+
+const Layout = () => {
+  return (
+    <>
+      <Navbar />
+      <Inventory />
+      <Footer className='footer' />
+    </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: "/game/:id",
+        element: <Single />
+      },
+      {
+        path: '/inventory',
+        element: <Inventory />
+      },
+    ]
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/add",
+    element: <Add />
+  },
+  {
+    path: "/employees",
+    element: <Employees />
+  },
+]);
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <header className='App-header'>
-          <Nav />
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/inventory" exact element={<Inventory />} />
-          </Routes>
-        </header>
+    <div className="App">
+      <div className='container'>
+        <RouterProvider router={router} />
       </div>
-    </Router>
+    </div>
   );
-}
+};
+
+
 
 export default App;
+
+/*
+<BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Inventory />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/update" element={<Update />} />
+        </Routes>
+      </BrowserRouter>
+ */

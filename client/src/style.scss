@@ -1,0 +1,117 @@
+.App {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+
+    .container {
+        position: relative;
+        width: 95%;
+
+
+        .link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        //login and registration
+        .auth {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            height: 100vh;
+
+            h1 {
+                font-size: 30px;
+                color: rgba(246, 208, 59, 255);
+                margin-bottom: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px;
+                gap: 10px;
+                background-color: #BAA242;
+                width: 200px;
+
+                input {
+                    padding: 10px;
+                    border: none;
+                    border-bottom: 1px solid gray;
+                }
+
+                button {
+                    padding: 10px;
+                    border: none;
+                    background-color: lavenderblush;
+                    width: 95%;
+                    cursor: pointer;
+                    color: black;
+                }
+
+                p {
+                    font-size: 12px;
+                    color: red;
+                }
+
+                span {
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .navbar {
+            .container {
+                padding: 10px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: black;
+
+                .logo {
+                    img {
+                        width: 250px;
+                    }
+                }
+
+                .links {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: white;
+
+                    h6 {
+                        font-size: 16px;
+                        font-weight: 300;
+                    }
+
+                    span {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        footer {
+            display: flex;
+            margin-top: 80px;
+            padding: 20px;
+            background-color: black;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+
+            img {
+                height: 150px;
+            }
+
+            span {
+                color: white;
+            }
+        }
+    }
+}
