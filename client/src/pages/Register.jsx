@@ -9,7 +9,7 @@ const Register = () => {
         email: "",
         password: "",
     })
-    const [err, setError] = useState(null);
+    const [msg, setMsg] = useState(null);
 
     const navigate = useNavigate();
 
@@ -20,10 +20,11 @@ const Register = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            await axios.post("/auth/register", inputs);
+            const res = await axios.post("/auth/register", inputs);
+            setMsg(res.data)
             navigate("/login");
         } catch (err) {
-            setError(err.response.data);
+            setMsg(err.response.data);
         }
     };
 
@@ -35,7 +36,7 @@ const Register = () => {
                 <input required type='text' placeholder='username' name='username' onChange={handleChange} />
                 <input required type='password' placeholder='password' name='password' onChange={handleChange} />
                 <button onClick={handleSubmit}>Register</button>
-                {err && <p>{err}</p>}
+                {msg && <p>{msg}</p>}
                 <span>Already have an account? <Link to="/login">Login</Link></span>
             </form>
         </div>

@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 
 export const register = (req, res) => {
     //check if user already exists
-    const q = "SELECT * FROM users WHERE email = ? OR username = ?"
+    const q = "SELECT * FROM user WHERE email = ? OR username = ?"
 
     db.query(q, [req.body.email, req.body.username], (err, data) => {
         if (err) return res.json(err)
@@ -15,7 +15,7 @@ export const register = (req, res) => {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
-        const q = "INSERT INTO users(`email`, `username`, `password`) VALUES (?)"
+        const q = "INSERT INTO user(`email`, `username`, `password`) VALUES (?)"
         const values = [
             req.body.email,
             req.body.username,
@@ -32,7 +32,7 @@ export const register = (req, res) => {
 export const login = (req, res) => {
     //check user exists
 
-    const q = "SELECT * FROM users WHERE username = ?"
+    const q = "SELECT * FROM user WHERE username = ?"
     db.query(q, [req.body.username], (err, data) => {
         if (err) return res.json(err);
         if (data.length === 0) return res.status(404).json("User not found!");

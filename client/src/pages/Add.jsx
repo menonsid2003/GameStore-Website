@@ -1,15 +1,14 @@
-import React, { useContext , useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-//import { AuthContext } from '../context/authContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import "./Add.scss";
 
 
 const Add = () => {
-  const [inputs, setInputs] = useState({
-    SKU: "",
+  const [game, setGame] = useState({
+    sku: "",
     title: "",
     year: 0,
     genre1: "",
@@ -21,20 +20,21 @@ const Add = () => {
     cover: "",
   })
 
-  const [err, setError] = useState(null);
+  const [msg, setMsg] = useState(null);
 
   const navigate = useNavigate();
 
   const handleChange = e => {
-      setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  }
+    setGame(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-        await axios.post("/inventory/add", inputs);
-        navigate("/add");
+      const res = await axios.post("/inventory/add", game);
+      setMsg(res.data);
     } catch (err) {
-        setError(err.response.data);
+      setMsg(err.response.data);
     }
   };
 
@@ -44,19 +44,19 @@ const Add = () => {
       <div className='Add'>
         <h1>Add a game</h1>
         <form>
-            <input required type='text' placeholder='SKU' name="SKU" onChange={handleChange} />
-            <input required type='text' placeholder='title' name="title" onChange={handleChange} />
-            <input required type='number' placeholder='year of release' name="year" onChange={handleChange} />
-            <input required type='text' placeholder='genre 1' name="genre1" onChange={handleChange} />
-            <input required type='text' placeholder='genre 2' name="genre2" onChange={handleChange} />
-            <input required type='number' placeholder='system ID' name="system" onChange={handleChange} />
-            <input required type='text' placeholder='rating' name="rating" onChange={handleChange} />
-            <input required type='number' placeholder='price' name="price" onChange={handleChange} />
-            <input required type='number' placeholder='publisher ID' name="publisher" onChange={handleChange} />
-            <input required type='text' placeholder='cover image link' name="cover" onChange={handleChange} />
-            <button onClick={handleSubmit}>Add</button>
-            {err && <p>{err}</p>}
-            {/* <span>Don't have an account? <Link to="/register">Register</Link></span> */}
+          <input required type='text' placeholder='SKU' name="sku" onChange={handleChange} />
+          <input required type='text' placeholder='title' name="title" onChange={handleChange} />
+          <input required type='number' placeholder='year of release' name="year" onChange={handleChange} />
+          <input required type='text' placeholder='genre 1' name="genre1" onChange={handleChange} />
+          <input required type='text' placeholder='genre 2' name="genre2" onChange={handleChange} />
+          <input required type='number' placeholder='system ID' name="system" onChange={handleChange} />
+          <input required type='text' placeholder='rating' name="rating" onChange={handleChange} />
+          <input required type='number' placeholder='price' name="price" onChange={handleChange} />
+          <input required type='number' placeholder='publisher ID' name="publisher" onChange={handleChange} />
+          <input required type='text' placeholder='cover image link' name="cover" onChange={handleChange} />
+          <button onClick={handleSubmit}>Add</button>
+          {msg && <p>{msg}</p>}
+          {/* <span>Don't have an account? <Link to="/register">Register</Link></span> */}
         </form>
       </div >
       <Footer />

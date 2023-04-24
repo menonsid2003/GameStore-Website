@@ -1,7 +1,7 @@
 import { db } from "../db.js"
 
 export const getConsoles = (req, res) => {
-    const q = "SELECT * FROM consoles"
+    const q = "SELECT * FROM console"
     db.query(q, (err, data) => {
         if (err) return res.json(err)
         return res.json(data);
