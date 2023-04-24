@@ -58,15 +58,19 @@ const Inventory = () => {
                     inventory.map(video_game => (
                         <div className='video_game' key={video_game.sku}>
                             <div className="card">
+                            <div className='titleYear'>
                                 <div className="image">
                                     {video_game.cover && <img src={video_game.cover} alt='' />}
-                                    <div className="info">
-                                        <h2>{video_game.title} - {video_game.systemName}</h2>
-                                        <p>{video_game.year_of_release}</p>
-                                        <h3>${video_game.price}</h3>
-                                        <Link className='cart' to="/">
-                                            <img src={cart} alt="" />
-                                        </Link>
+                                        <div className="info">
+                                            <h2>{video_game.title} - {video_game.systemName}</h2>
+                                            <p>{video_game.year_of_release}</p>
+                                        </div>
+                                        <div className='priceCart'>
+                                            <h3>${video_game.price}</h3>
+                                            <Link className='cart' to="/">
+                                                <img src={cart} alt="" />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

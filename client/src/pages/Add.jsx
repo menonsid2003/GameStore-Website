@@ -42,7 +42,7 @@ const Add = () => {
     }
   };
 
-  if (currentUser === null || (currentUser.type !== "emp" || currentUser.type !== "own")) {
+  if (currentUser === null || (currentUser.type !== "emp" && currentUser.type !== "own")) {
     return (
       <body>
         <div className='wrapper'>

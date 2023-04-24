@@ -1,16 +1,26 @@
 html,
 body {
-    height: 100%;
+    //height: 100%;
 }
 
-body {
+/* body {
     display: flex;
     flex-direction: column;
-}
+    align-items: center;
+} */
 
 .wrapper {
-    min-height: calc(100vh - 350px);
+    //min-height: calc(100vh - 350px);
+    display: flex;
+    position: relative;
+    color: white;
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        height: 100%;
 
     .notLoggedIn {
         color: white;
@@ -21,10 +31,43 @@ body {
 
     .Employees {
         color: white;
-        flex: 1 0 auto;
-        padding: 20px;
+        //flex: 1 0 auto;
+        //padding: 20px;
 
-        h1 {}
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            gap: 10px;
+            background-color: #BAA242;
+            width: 200px;
+
+            input {
+                padding: 10px;
+                border: none;
+                border-bottom: 1px solid gray;
+            }
+
+            button {
+                padding: 10px;
+                border: none;
+                background-color: lavenderblush;
+                width: 95%;
+                cursor: pointer;
+                color: black;
+            }
+
+            p {
+                font-size: 12px;
+                color: red;
+            }
+
+            span {
+                font-size: 12px;
+                text-align: center;
+            }
+        }
     }
 }
 
