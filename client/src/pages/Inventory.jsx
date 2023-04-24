@@ -61,6 +61,10 @@ const Inventory = () => {
                 </div>
 
             </nav>
+            <div className='buttonWrapper'>
+                {(currentUser !== null && (currentUser.type === "emp" || currentUser.type === "own")) && <Link to="/add"><button className='Button'>Add new game</button></Link>}
+                {(currentUser !== null && (currentUser.type === "own")) && <Link to="/employees"><button className='Button'>Manage Employees</button></Link>}
+            </div>
             <div className="Inventory">
                 {
                     inventory.map(video_game => (
@@ -78,8 +82,7 @@ const Inventory = () => {
                         </div>
                     ))}
             </div>
-            {(currentUser !== null && currentUser.type === "EMP") && <button><Link to="/add">Add new game</Link></button>}
-        </div>
+        </div >
     )
 };
 

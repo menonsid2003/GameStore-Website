@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Single from './pages/Single';
 import Add from './pages/Add';
+import Employees from './pages/Employees';
 import "./style.scss";
 
 const Layout = () => {
@@ -15,7 +16,7 @@ const Layout = () => {
     <>
       <Navbar />
       <Inventory />
-      <Footer />
+      <Footer className='footer' />
     </>
   );
 };
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/add",
     element: <Add />
+  },
+  {
+    path: "/employees",
+    element: <Employees />
   },
 ]);
 

@@ -1,5 +1,8 @@
 import express from "express";
+import { employees } from "../controllers/user.js";
 
-const Router = express.Router()
+const router = express.Router()
+
+router.post("/employees", employees)
 
 export default router

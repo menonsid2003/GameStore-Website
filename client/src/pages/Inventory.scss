@@ -29,6 +29,7 @@
     justify-content: center;
     column-gap: 100px;
     position: relative;
+    top: 30px;
 
     .video_game {
         .card {
@@ -60,17 +61,13 @@
                 max-width: auto;
                 height: 300px;
                 object-fit: cover;
-                //height: auto;
             }
 
             .info {
                 justify-content: center;
-                //border: 1px solid green;
                 height: 150px;
                 max-width: auto;
                 margin-top: auto;
-                //margin-left: 5px;
-                //margin-right: 5px;
                 color: white;
                 position: relative;
                 bottom: 10px;
@@ -79,7 +76,6 @@
                 h2 {
                     text-align: center;
                     justify-content: center;
-                    //inline-size: 150px;
                     overflow-wrap: break-word;
                     line-height: 95%;
                 }
@@ -92,12 +88,10 @@
                 }
 
                 h3 {
-                    //border: 1px solid white;
                     position: absolute;
                     top: 65px;
                     left: 0;
                     right: 0;
-
                     line-height: 100%;
                     font-size: 30px;
                     color: rgba(246, 208, 59, 255);
@@ -115,5 +109,60 @@
             -moz-box-shadow: 0px 0px 22px -4px rgba(255, 255, 255, 1);
             box-shadow: 0px 0px 22px -4px rgba(255, 255, 255, 1);
         }
+    }
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    gap: 10px;
+
+    .Button {
+
+        position: relative;
+        top: 0px;
+
+        a:link {
+            text-decoration: none;
+        }
+
+
+        a:visited {
+            text-decoration: none;
+        }
+
+
+        a:hover {
+            text-decoration: none;
+        }
+
+
+        a:active {
+            text-decoration: none;
+        }
+
+        //transform: scale(0.7);
+        display: inline-block;
+        align-items: center;
+        outline: 0;
+        cursor: pointer;
+        border: 2px solid white;
+        border-radius: 3px;
+        color: black;
+        background: rgba(246, 208, 59, 255);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 28px;
+        padding: 4px 10px;
+        text-align: center;
+        transition-duration: .15s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .Button:hover {
+        color: rgba(246, 208, 59, 255);
+        background: black;
     }
 }
