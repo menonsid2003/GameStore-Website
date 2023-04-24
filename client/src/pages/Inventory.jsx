@@ -3,11 +3,11 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import "./Inventory.scss"
 import { AuthContext } from '../context/authContext.js';
+import cart from '../images/cart.png'
 
 const Inventory = () => {
     const { currentUser } = useContext(AuthContext);
     const [inventory, setInventory] = useState([]);
-    //const [consoles, setConsoles] = useState([]);
 
     useEffect(() => {
         const fetchAllGames = async () => {
@@ -20,18 +20,6 @@ const Inventory = () => {
         };
         fetchAllGames();
     }, []);
-
-    /*    useEffect(() => {
-           const fetchAllConsoles = async () => {
-               try {
-                   const res = await axios.get("/consoles")
-                   setConsoles(res.data);
-               } catch (err) {
-                   console.log(err);
-               }
-           };
-           fetchAllConsoles();
-       }, []); */
 
     return (
         <div>
@@ -76,6 +64,9 @@ const Inventory = () => {
                                         <h2>{video_game.title} - {video_game.systemName}</h2>
                                         <p>{video_game.year_of_release}</p>
                                         <h3>${video_game.price}</h3>
+                                        <Link className='cart' to="/">
+                                            <img src={cart} alt="" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

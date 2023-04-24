@@ -64,6 +64,7 @@
             }
 
             .info {
+                //border: 1px solid white;
                 justify-content: center;
                 height: 150px;
                 max-width: auto;
@@ -89,12 +90,25 @@
 
                 h3 {
                     position: absolute;
-                    top: 65px;
+                    top: 60px;
                     left: 0;
                     right: 0;
                     line-height: 100%;
                     font-size: 30px;
                     color: rgba(246, 208, 59, 255);
+                }
+
+                .cart {
+                    position: relative;
+                    z-index: 2;
+                    object-fit: cover;
+
+                    //top: 10px;
+                    //left: 120px;
+                    img {
+                        max-width: 100px;
+                        height: auto;
+                    }
                 }
             }
         }
