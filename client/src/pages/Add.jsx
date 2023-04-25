@@ -44,18 +44,19 @@ const Add = () => {
 
   if (currentUser === null || (currentUser.type !== "emp" && currentUser.type !== "own")) {
     return (
-      <body>
-        <div className='wrapper'>
-          <Navbar />
-          <div className='notLoggedIn'>
-            <h1>You do not have the appropriate privileges to access this page!</h1>
-            <h1><Link to="/login">Login</Link></h1>
-          </div >
-        </div>
-        <footer className='foot'>
-          <Footer />
-        </footer>
-      </body>
+      <>
+        <Navbar />
+        <body>
+          <div className='wrapper'>
+
+            <div className='notLoggedIn'>
+              <h1>You do not have the appropriate privileges to access this page!</h1>
+              <h1><Link to="/login">Login</Link></h1>
+            </div >
+          </div>
+        </body>
+        <Footer />
+      </>
     )
   } else {
     return (
@@ -76,7 +77,6 @@ const Add = () => {
             <input required type='text' placeholder='cover image link' name="cover" onChange={handleChange} />
             <button onClick={handleSubmit}>Add</button>
             {msg && <p>{msg}</p>}
-            {/* <span>Don't have an account? <Link to="/register">Register</Link></span> */}
           </form>
         </div >
         <Footer />

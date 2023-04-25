@@ -35,45 +35,47 @@ const Employees = () => {
 
     if (currentUser === null || currentUser.type !== "own") {
         return (
-            <body>
-                <div className='wrapper'>
-                    <Navbar />
-                    <div className='notLoggedIn'>
-                        <h1>You do not have the appropriate privileges to access this page!</h1>
-                        <h1><Link to="/login">Login</Link></h1>
-                    </div >
-                </div>
-                <footer className='foot'>
-                    <Footer />
-                </footer>
-            </body>
+            <>
+                <Navbar />
+                <body>
+                    <div className='wrapper'>
+
+                        <div className='notLoggedIn'>
+                            <h1>You do not have the appropriate privileges to access this page!</h1>
+                            <h1><Link to="/login">Login</Link></h1>
+                        </div >
+                    </div>
+                </body>
+                <Footer />
+            </>
         )
     }
     else {
         return (
-            <div className='wrapper'>
+            <>
                 <Navbar />
-                <div className='Employees'>
-                    <h1>Add an employee</h1>
-                    <form>
-                        <input required type='text' placeholder='username of employee' name='username' onChange={handleChange} />
-                        <div className='employeeType'>
-                            <input required type='radio' name='type' value='emp' id='emp' onChange={handleChange} />
-                            <label htmlFor='emp'>Employee</label>
-                        </div>
-                        <div className='employeeType'>
-                            <input required type='radio' name='type' value='cust' id='cust' onChange={handleChange} />
-                            <label htmlFor='cust'>Customer</label>
-                        </div>
-                        <button onClick={handleSubmit}>Change</button>
-                        {msg && <p>{msg}</p>}
-                        {/* <span>Don't have an account? <Link to="/register">Register</Link></span> */}
-                    </form>
-                </div >
-                <footer className="footer">
-                    <Footer />
-                </footer>
-            </div>
+                <div className='wrapper'>
+
+                    <div className='Employees'>
+                        <h1>Add an employee</h1>
+                        <form>
+                            <input required type='text' placeholder='username of employee' name='username' onChange={handleChange} />
+                            <div className='employeeType'>
+                                <input required type='radio' name='type' value='emp' id='emp' onChange={handleChange} />
+                                <label htmlFor='emp'>Employee</label>
+                            </div>
+                            <div className='employeeType'>
+                                <input required type='radio' name='type' value='cust' id='cust' onChange={handleChange} />
+                                <label htmlFor='cust'>Customer</label>
+                            </div>
+                            <button onClick={handleSubmit}>Change</button>
+                            {msg && <p>{msg}</p>}
+                            {/* <span>Don't have an account? <Link to="/register">Register</Link></span> */}
+                        </form>
+                    </div >
+                </div>
+                <Footer />
+            </>
         )
     }
 };

@@ -9,8 +9,9 @@ export const getGames = (req, res) => {
 };
 
 export const getGame = (req, res) => {
-    const q = "SELECT `title`, `year_of_release`, `genre1`, `genre2`, `systemID`, `rating`, `price`, `publisherID`, `sku`, `cover` FROM video_game v JOIN console c ON c.systemID===v.systemID JOIN publishers p ON v.publisherID===p.publisherID"
-    db.query(q, (err, data) => {
+    const q = "SELECT `title`, `year_of_release`, `genre1`, `genre2`, `systemID`, `rating`, `price`, `publisherID`, `sku`, `cover` FROM video_game v JOIN console c ON c.systemID===v.systemID JOIN publishers p ON v.publisherID===p.publisherID WHERE sku = ?"
+    
+    db.query(q, req.body.sku, (err, data) => {
         if (err) return res.json(err)
         return res.json(data);
     })
@@ -37,7 +38,6 @@ export const addGame = (req, res) => {
             req.body.publisher,
             req.body.cover,
         ]
-        console.log(values);
 
         db.query(q, [values], (err, data) => {
             if (err) return res.json(err)

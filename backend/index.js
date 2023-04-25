@@ -5,6 +5,7 @@ import inventoryRoutes from "./routes/inventory.js"
 import consoleRoutes from "./routes/consoles.js"
 import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
+import cartRoutes from "./routes/cart.js"
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 
@@ -35,6 +36,8 @@ app.use("/api/inventory", inventoryRoutes);
 app.use("/api/consoles", consoleRoutes);
 
 app.use("/api/user", userRoutes);
+
+app.use("/api/cart", cartRoutes);
 
 
 app.listen(8800, () => {

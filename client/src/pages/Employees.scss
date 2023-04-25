@@ -1,26 +1,15 @@
-html,
-body {
-    //height: 100%;
-}
-
-/* body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
-
 .wrapper {
     //min-height: calc(100vh - 350px);
     display: flex;
     position: relative;
     color: white;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: black;
-        height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 100vh;
 
     .notLoggedIn {
         color: white;
@@ -34,7 +23,7 @@ body {
         //flex: 1 0 auto;
         //padding: 20px;
 
-        form{
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;

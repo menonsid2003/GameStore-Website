@@ -1,11 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "../images/logo.svg"
 import { AuthContext } from '../context/authContext.js';
+import cart from '../images/cart.png'
+import Cart from './Cart';
 
 const Navbar = () => {
 
   const { currentUser, logout } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className='navbar'>
@@ -16,7 +19,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="links">
-          <Link className='link' to="/?cat=art">
+          {/* <Link className='link' to="/?cat=art">
             <h6>ART</h6>
           </Link>
           <Link className='link' to="/?cat=swag">
@@ -30,14 +33,18 @@ const Navbar = () => {
           </Link>
           <Link className='link' to="/?cat=epic">
             <h6>EPIC</h6>
-          </Link>
-          <span>{currentUser?.username}</span>
-          {currentUser ? (<span onClick={logout}>Logout</span>) : (<Link className='link' to="/login">Login</Link>)}
-          <span className='write'>
-            <Link className='link' to="/write">Write</Link>
-          </span>
+          </Link> */}
+          <div className='user'>
+            <span>{currentUser?.username}</span>
+            {currentUser ? (<span onClick={logout}>Logout</span>) : (<Link className='link' to="/login">Login</Link>)}
+          </div>
+          <div className='cartIcon' onClick={() => setOpen(!open)}>
+            <img src={cart} alt="" />
+            <span>0</span>
+          </div>
         </div>
       </div>
+      {open && <Cart />}
     </div>
   )
 }

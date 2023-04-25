@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.get("/", getGames)
 router.post("/add", addGame)
+
 router.get("/:sku", getGame)
 router.delete("/:sku", deleteGame)
 router.put("/:sku", updateGame)
