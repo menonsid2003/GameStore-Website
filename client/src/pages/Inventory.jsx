@@ -39,6 +39,7 @@ const Inventory = () => {
                 genre2: gameandCust.video_game.genre2,
                 price: gameandCust.video_game.price,
                 custID: currentUser.username,
+                qty: 1,
             }))
             await axios.post("/cart/addToCart", gameandCust);
         } catch (err) {

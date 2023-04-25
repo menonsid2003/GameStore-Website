@@ -6,6 +6,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useDispatch } from 'react-redux';
 import { removeItem } from '../redux/cartReducer';
 import axios from 'axios';
+//import { cartNum } from '../redux/cartReducer';
 
 const Cart = () => {
 
@@ -15,7 +16,7 @@ const Cart = () => {
     const totalPrice = () => {
         let total = 0
         products.forEach((item) => {
-            (total += item.price)
+            (total += (item.price * item.qty))
         });
         return total.toFixed(2);
     }
@@ -28,7 +29,7 @@ const Cart = () => {
         } catch (err) {
         }
     };
-
+    
     return (
         <div className='cart'>
             <h1>Products in your cart</h1>
@@ -38,7 +39,7 @@ const Cart = () => {
                     <div className="details">
                         <h1>{item.title}</h1>
                         <p>{item.genre1} {item.genre2}</p>
-                        <div className="price">${item.price}</div>
+                        <div className="price">{item.qty} x ${item.price}</div>
                     </div>
                     <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
                 </div>
