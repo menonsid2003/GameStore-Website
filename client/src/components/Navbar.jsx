@@ -36,7 +36,9 @@ const Navbar = () => {
           </Link> */}
           <div className='user'>
             <span>{currentUser?.username}</span>
+            <div className='login'>
             {currentUser ? (<span onClick={logout}>Logout</span>) : (<Link className='link' to="/login">Login</Link>)}
+            </div>
           </div>
           <div className='cartIcon' onClick={() => setOpen(!open)}>
             <img src={cart} alt="" />

@@ -9,7 +9,7 @@ export const register = (req, res) => {
 
     db.query(q, [req.body.email, req.body.username], (err, data) => {
         if (err) return res.json(err)
-        if (data.length) return res.status(409).json("User already exists!");
+        if (data.length === 1) return res.status(409).json("User already exists!");
 
         //hash
         const salt = bcrypt.genSaltSync(10);
@@ -21,8 +21,19 @@ export const register = (req, res) => {
             req.body.username,
             hash,
         ]
+        const q1 = "INSERT INTO customer(`customerID`) VALUES (?)"
+        const values1 = [
+            req.body.username,
+
+        ]
+
+        db.query(q1, [values1], (err, data) => {
+            console.log("added to customer")
+            if (err) return res.json(err)
+        })
 
         db.query(q, [values], (err, data) => {
+            console.log("added to users")
             if (err) return res.json(err)
             return res.status(200).json("User has been created.")
         })

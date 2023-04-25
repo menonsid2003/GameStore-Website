@@ -1,15 +1,15 @@
-import React, { } from 'react'
+import React, { useContext } from 'react'
 import "./Cart.scss"
-//import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useDispatch } from 'react-redux';
 import { removeItem } from '../redux/cartReducer';
 import axios from 'axios';
+import { AuthContext } from '../context/authContext.js';
 //import { cartNum } from '../redux/cartReducer';
 
 const Cart = () => {
-
+    const { currentUser } = useContext(AuthContext);
     const dispatch = useDispatch();
     const products = useSelector(state => state.cart.products)
 
@@ -29,7 +29,22 @@ const Cart = () => {
         } catch (err) {
         }
     };
+
+    const handleCheckout = async (customerID) => {
+        try {
+            await axios.post("/cart/checkout", customerID);
+        } catch (err) {
+        }
+    };
     
+    if(currentUser == null){
+        return (
+            <div className='cart'>
+                <h1>You must be logged in!</h1>
+            </div>
+        )
+    }
+    else{
     return (
         <div className='cart'>
             <h1>Products in your cart</h1>
@@ -48,10 +63,11 @@ const Cart = () => {
                 <span>SUBTOTAL</span>
                 <span>${totalPrice()}</span>
             </div>
-            <button>PROCEED TO CHECKOUT</button>
+            <button onClick={() => handleCheckout( currentUser.custID )}>PROCEED TO CHECKOUT</button>
             <span className='reset'>Reset Cart</span>
         </div>
     )
+    }
 }
 
 export default Cart

@@ -10,11 +10,6 @@ import { addInCart } from '../redux/cartReducer';
 const Inventory = () => {
     const { currentUser } = useContext(AuthContext);
     const [inventory, setInventory] = useState([]);
-    //var quantity = 1;
-    //const [game, setGame] = useState([]);
-
-    //const [msg, setMsg] = useState(null);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
