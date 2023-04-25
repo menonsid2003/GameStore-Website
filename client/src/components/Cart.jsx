@@ -1,10 +1,15 @@
 import React, { } from 'react'
 import "./Cart.scss"
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useDispatch } from 'react-redux';
+import { removeItem } from '../redux/cartReducer';
+import axios from 'axios';
 
 const Cart = () => {
 
+    const dispatch = useDispatch();
     const products = useSelector(state => state.cart.products)
 
     const totalPrice = () => {
@@ -14,6 +19,16 @@ const Cart = () => {
         });
         return total.toFixed(2);
     }
+
+    const handleSubmit = async (itemobject) => {
+        try {
+            dispatch(removeItem(itemobject.item.sku))
+            await axios.post("/cart/removeFromCart", itemobject);
+
+        } catch (err) {
+        }
+    };
+
     return (
         <div className='cart'>
             <h1>Products in your cart</h1>
@@ -23,9 +38,9 @@ const Cart = () => {
                     <div className="details">
                         <h1>{item.title}</h1>
                         <p>{item.genre1} {item.genre2}</p>
-                        <div className="price">1 x ${item.price}</div>
+                        <div className="price">${item.price}</div>
                     </div>
-                    <Link className='delete'>delete</Link>
+                    <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
                 </div>
             ))}
             <div className="total">

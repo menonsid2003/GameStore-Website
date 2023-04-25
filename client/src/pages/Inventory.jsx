@@ -10,6 +10,7 @@ import { addInCart } from '../redux/cartReducer';
 const Inventory = () => {
     const { currentUser } = useContext(AuthContext);
     const [inventory, setInventory] = useState([]);
+    //var quantity = 1;
     //const [game, setGame] = useState([]);
 
     //const [msg, setMsg] = useState(null);
@@ -30,7 +31,6 @@ const Inventory = () => {
 
     const handleSubmit = async (gameandCust) => {
         try {
-            await axios.post("/cart/addToCart", gameandCust);
             dispatch(addInCart({
                 sku: gameandCust.video_game.sku,
                 cover: gameandCust.video_game.cover,
@@ -38,7 +38,9 @@ const Inventory = () => {
                 genre1: gameandCust.video_game.genre1,
                 genre2: gameandCust.video_game.genre2,
                 price: gameandCust.video_game.price,
+                custID: currentUser.username,
             }))
+            await axios.post("/cart/addToCart", gameandCust);
         } catch (err) {
         }
     };
