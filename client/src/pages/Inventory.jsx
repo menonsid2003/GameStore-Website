@@ -102,7 +102,7 @@ const Inventory = () => {
                                     {video_game.cover && <img src={video_game.cover} alt='' />}
                                     <div className="info">
                                         <h2>{video_game.title} - {video_game.systemName}</h2>
-                                        <p>{video_game.year_of_release}</p>
+                                        <p>{video_game.year_of_release} - {video_game.name}</p>
                                     </div>
                                     <div className='priceCart'>
                                         <h3>${video_game.price}</h3>

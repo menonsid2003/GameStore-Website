@@ -41,53 +41,72 @@ const PostCheckout = () => {
         }
     };
 
-    if (products && products.length === 0) {
+    if (currentUser == null) {
         return (
             <>
                 <Navbar />
                 <body>
                     <div className='wrapper'>
 
-                        <div className='emptyCart'>
-                            <h1>Your cart is empty!</h1>
-                            <h1><Link to="/">Back to Inventory</Link></h1>
+                        <div className='notLoggedIn'>
+                            <h1>You must be logged in to checkout!</h1>
+                            <h1><Link to="/login">Login</Link></h1>
                         </div >
                     </div>
                 </body>
                 <Footer />
             </>
         )
-    } else {
-        return (
-            <>
-                <Navbar />
-                <div className='postcheckout'>
-                    <div>
-                        <h1 className='success'>Checkout</h1>
-                    </div>
-                    <div>
-                        {products?.map(item => (
-                            <div className='item' key={item.sku}>
-                                <img src={item.cover} alt="" />
-                                <div className="details">
-                                    <h1>{item.title}</h1>
-                                    <p>{item.genre1} {item.genre2}</p>
-                                    <div className="price">{item.qty} x ${item.price}</div>
+    }
+    else {
+        if (products && products.length === 0) {
+            return (
+                <>
+                    <Navbar />
+                    <body>
+                        <div className='wrapper'>
+
+                            <div className='emptyCart'>
+                                <h1>Your cart is empty!</h1>
+                                <h1><Link to="/">Back to Inventory</Link></h1>
+                            </div >
+                        </div>
+                    </body>
+                    <Footer />
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Navbar />
+                    <div className='postcheckout'>
+                        <div>
+                            <h1 className='success'>Checkout</h1>
+                        </div>
+                        <div>
+                            {products?.map(item => (
+                                <div className='item' key={item.sku}>
+                                    <img src={item.cover} alt="" />
+                                    <div className="details">
+                                        <h1>{item.title}</h1>
+                                        <p>{item.genre1} {item.genre2}</p>
+                                        <div className="price">{item.qty} x ${item.price}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                        <div className="total">
-                            <h2>Total:</h2>
-                            <h3>${totalPrice()}</h3>
-                            <div className='buttonWrapper1'>
-                                <button className='Button' onClick={() => run()}>Confirm</button>
+                            ))}
+                            <div className="total">
+                                <h2>Total:</h2>
+                                <h3>${totalPrice()}</h3>
+                                <div className='buttonWrapper1'>
+                                    <button className='Button' onClick={() => run()}>Confirm</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <Footer />
-            </>
-        )
+                    <Footer />
+                </>
+            )
+        }
     }
 }
 

@@ -18,10 +18,10 @@ export const getGames = (req, res) => {
         orderClause = "";
     }
 
-    var q = "SELECT c.systemName, v.title, v.year_of_release,  v.genre1,  v.genre2,  v.systemID, v.rating, v.price, v.publisherID, v.sku, v.cover FROM video_game v JOIN console c ON c.systemID = v.systemID JOIN publisher p ON p.publisherID = v.publisherID WHERE c.companyName = ?" + orderClause + ";"
+    var q = "SELECT c.systemName, v.title, v.year_of_release,  v.genre1,  v.genre2,  v.systemID, v.rating, v.price, p.name, v.sku, v.cover FROM video_game v JOIN console c ON c.systemID = v.systemID JOIN publisher p ON p.publisherID = v.publisherID WHERE c.companyName = ?" + orderClause + ";"
 
     if (filterOption === 'all') {
-        q = "SELECT c.systemName, v.title, v.year_of_release,  v.genre1,  v.genre2,  v.systemID, v.rating, v.price, v.publisherID, v.sku, v.cover FROM video_game v JOIN console c ON c.systemID = v.systemID JOIN publisher p ON p.publisherID = v.publisherID " + orderClause + ";"
+        q = "SELECT c.systemName, v.title, v.year_of_release,  v.genre1,  v.genre2,  v.systemID, v.rating, v.price, p.name, v.sku, v.cover FROM video_game v JOIN console c ON c.systemID = v.systemID JOIN publisher p ON p.publisherID = v.publisherID " + orderClause + ";"
     }
 
     db.query(q, [filterOption], (err, data) => {
