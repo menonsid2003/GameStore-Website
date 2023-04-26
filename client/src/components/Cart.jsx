@@ -3,8 +3,7 @@ import "./Cart.scss"
 import { useSelector } from 'react-redux'
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useDispatch } from 'react-redux';
-import { removeItem, resetCart } from '../redux/cartReducer';
-import axios from 'axios';
+import { removeItem, remove1 } from '../redux/cartReducer';
 import { AuthContext } from '../context/authContext.js';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,24 +24,28 @@ const Cart = () => {
     const handleSubmit = async (itemobject) => {
         try {
             dispatch(removeItem(itemobject.item.sku))
-            await axios.post("/cart/removeFromCart", itemobject);
 
         } catch (err) {
         }
     };
 
-    function run() {
-        //handleCheckout({ 'custID': currentUser.username });
-        navigate("/postcheckout");
-        dispatch(resetCart)
-    };
-
-    /* const handleCheckout = async (customerID) => {
+    const handleMinus = async (itemobject) => {
         try {
-            await axios.post("/cart/checkout", customerID);
+            if (itemobject.item.qty === 1) {
+                dispatch(removeItem(itemobject.item.sku));
+            } else {
+                dispatch(remove1(itemobject.item.sku));
+            }
+
+
         } catch (err) {
+            console.log(err);
         }
-    }; */
+    };
+
+    const handleCheckout = async () => {
+        navigate("/postcheckout");
+    };
 
     if (currentUser == null) {
         return (
@@ -63,17 +66,22 @@ const Cart = () => {
                             <p>{item.genre1} {item.genre2}</p>
                             <div className="price">{item.qty} x ${item.price}</div>
                         </div>
-                        <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
+                        <div className='deleteWrapper'>
+                            <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
+                            <div className='delete1'>
+                                <DeleteOutlinedIcon onClick={() => handleMinus({ item })} />
+                                <span>-1</span>
+                            </div>
+                        </div>
                     </div>
                 ))}
                 <div className="total">
-                    <span>SUBTOTAL</span>
+                    <span>SUBTOTAL:</span>
                     <span>${totalPrice()}</span>
                 </div>
                 <div className='buttonWrapper'>
-                    <button className='Button' onClick={() => run()}>PROCEED TO CHECKOUT</button>
+                    <button className='Button' onClick={() => handleCheckout()}>PROCEED TO CHECKOUT</button>
                 </div>
-                {/* <span className='reset'>Reset Cart</span> */}
             </div>
         )
     }

@@ -27,11 +27,15 @@ const PostCheckout = () => {
     function run() {
         handleCheckout({ 'custID': currentUser.username });
         navigate("/");
-        dispatch(resetCart)
+        alert("Order Confirmed!");
+        dispatch(resetCart());
     };
 
     const handleCheckout = async (customerID) => {
         try {
+            await products.forEach((item) => {
+                axios.post("/cart/addToCart", item);
+            });
             await axios.post("/cart/checkout", customerID);
         } catch (err) {
         }

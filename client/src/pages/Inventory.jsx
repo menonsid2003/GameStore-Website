@@ -53,7 +53,6 @@ const Inventory = () => {
                 custID: currentUser.username,
                 qty: 1,
             }))
-            await axios.post("/cart/addToCart", gameandCust);
         } catch (err) {
         }
     };
@@ -81,7 +80,7 @@ const Inventory = () => {
                     <div className="collection-sort">
                         <label>Sort by:</label>
                         <select onChange={handleSortChange}>
-                            <option value="default">Featured</option>
+                            <option value="default">Default</option>
                             <option value="lowhigh">By Price: Low to High</option>
                             <option value="highlow">By Price: High to Low</option>
                         </select>

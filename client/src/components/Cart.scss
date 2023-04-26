@@ -11,6 +11,7 @@
     -webkit-border-radius: 10px 0px 10px 10px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     box-shadow: none;
+    text-align: left;
 
     h1 {
         color: black;
@@ -19,7 +20,7 @@
     .item {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         gap: 20px;
         margin-bottom: 30px;
 
@@ -46,12 +47,48 @@
             }
         }
 
+        .deleteWrapper {
+            position: relative;
+            margin-left: auto;
+            color: red;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            justify-self: flex-end;
+            //gap: 10px;
+        }
+
         .delete {
             position: relative;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
             color: red;
             font-size: 30px;
             cursor: pointer;
             justify-self: flex-end;
+        }
+
+        .delete1 {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            margin-right: auto;
+            color: black;
+            left: 4px;
+            font-size: 30px;
+            cursor: pointer;
+            justify-self: flex-start;
+
+            span {
+                position: inherit;
+                align-items: center;
+                justify-content: center;
+                right: 5px;
+                bottom: 6px;
+                font-size: 15px;
+            }
         }
 
     }
