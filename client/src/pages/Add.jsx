@@ -48,7 +48,6 @@ const Add = () => {
         <Navbar />
         <body>
           <div className='wrapper'>
-
             <div className='notLoggedIn'>
               <h1>You do not have the appropriate privileges to access this page!</h1>
               <h1><Link to="/login">Login</Link></h1>

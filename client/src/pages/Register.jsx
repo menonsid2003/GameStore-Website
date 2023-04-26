@@ -8,6 +8,8 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
+        address: "",
+        phone: "",
     })
     const [msg, setMsg] = useState(null);
 
@@ -21,6 +23,8 @@ const Register = () => {
         e.preventDefault()
         try {
             const res = await axios.post("/auth/register", inputs);
+            await axios.post("/auth/addToCustomer", inputs);
+
             setMsg(res.data)
             navigate("/login");
         } catch (err) {
@@ -32,6 +36,8 @@ const Register = () => {
         <div className='auth'>
             <h1>Register</h1>
             <form>
+                <input required type='number' placeholder='phone number' name='phone' onChange={handleChange} />
+                <input required type='text' placeholder='address' name='address' onChange={handleChange} />
                 <input required type='email' placeholder='email' name='email' onChange={handleChange} />
                 <input required type='text' placeholder='username' name='username' onChange={handleChange} />
                 <input required type='password' placeholder='password' name='password' onChange={handleChange} />

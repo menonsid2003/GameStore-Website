@@ -3,15 +3,16 @@ import "./Cart.scss"
 import { useSelector } from 'react-redux'
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useDispatch } from 'react-redux';
-import { removeItem } from '../redux/cartReducer';
+import { removeItem, resetCart } from '../redux/cartReducer';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext.js';
-//import { cartNum } from '../redux/cartReducer';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const { currentUser } = useContext(AuthContext);
     const dispatch = useDispatch();
     const products = useSelector(state => state.cart.products)
+    const navigate = useNavigate();
 
     const totalPrice = () => {
         let total = 0
@@ -30,43 +31,51 @@ const Cart = () => {
         }
     };
 
-    const handleCheckout = async (customerID) => {
+    function run() {
+        //handleCheckout({ 'custID': currentUser.username });
+        navigate("/postcheckout");
+        dispatch(resetCart)
+    };
+
+    /* const handleCheckout = async (customerID) => {
         try {
             await axios.post("/cart/checkout", customerID);
         } catch (err) {
         }
-    };
-    
-    if(currentUser == null){
+    }; */
+
+    if (currentUser == null) {
         return (
             <div className='cart'>
                 <h1>You must be logged in!</h1>
             </div>
         )
     }
-    else{
-    return (
-        <div className='cart'>
-            <h1>Products in your cart</h1>
-            {products?.map(item => (
-                <div className='item' key={item.sku}>
-                    <img src={item.cover} alt="" />
-                    <div className="details">
-                        <h1>{item.title}</h1>
-                        <p>{item.genre1} {item.genre2}</p>
-                        <div className="price">{item.qty} x ${item.price}</div>
+    else {
+        return (
+            <div className='cart'>
+                <h1>Your Cart</h1>
+                {products?.map(item => (
+                    <div className='item' key={item.sku}>
+                        <img src={item.cover} alt="" />
+                        <div className="details">
+                            <h1>{item.title}</h1>
+                            <p>{item.genre1} {item.genre2}</p>
+                            <div className="price">{item.qty} x ${item.price}</div>
+                        </div>
+                        <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
                     </div>
-                    <DeleteOutlinedIcon className='delete' onClick={() => handleSubmit({ item })} />
+                ))}
+                <div className="total">
+                    <span>SUBTOTAL</span>
+                    <span>${totalPrice()}</span>
                 </div>
-            ))}
-            <div className="total">
-                <span>SUBTOTAL</span>
-                <span>${totalPrice()}</span>
+                <div className='buttonWrapper'>
+                    <button className='Button' onClick={() => run()}>PROCEED TO CHECKOUT</button>
+                </div>
+                {/* <span className='reset'>Reset Cart</span> */}
             </div>
-            <button onClick={() => handleCheckout( currentUser.custID )}>PROCEED TO CHECKOUT</button>
-            <span className='reset'>Reset Cart</span>
-        </div>
-    )
+        )
     }
 }
 

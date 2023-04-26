@@ -130,5 +130,5 @@ export const checkout = (req, res) => {
                 return res.status(200).json("Current order has ended.")
             })
         })
-    })
+    });
 };

@@ -7,20 +7,37 @@ import cart from '../images/cart.png'
 import { useDispatch } from 'react-redux';
 import { addInCart } from '../redux/cartReducer';
 
+var filteroption = "all";
+var sortoption = "default";
+
 const Inventory = () => {
     const { currentUser } = useContext(AuthContext);
     const [inventory, setInventory] = useState([]);
     const dispatch = useDispatch();
 
+
+
+    const fetchAllGames = async () => {
+        try {
+            const res = await axios.get(`/inventory/?filter=${filteroption}&sort=${sortoption}`)
+            setInventory(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleSortChange = (event) => {
+        sortoption = event.target.value;
+        fetchAllGames();
+    }
+
+    const handleFilterChange = (event) => {
+        filteroption = event.target.value;
+        fetchAllGames();
+    }
+
+
     useEffect(() => {
-        const fetchAllGames = async () => {
-            try {
-                const res = await axios.get("/inventory")
-                setInventory(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
         fetchAllGames();
     }, []);
 
@@ -53,18 +70,20 @@ const Inventory = () => {
 
                     <div className="collection-sort">
                         <label>Filter by:</label>
-                        <select>
-                            <option value="/">All Games</option>
-                            <option value="/">All Games</option>
-                            <option value="/">All Games</option>
-                            <option value="/">All Games</option>
+                        <select onChange={handleFilterChange}>
+                            <option value="all">All Consoles</option>
+                            <option value="nintendo">Nintendo</option>
+                            <option value="sony">Sony</option>
+                            <option value="microsoft">Microsoft</option>
                         </select>
                     </div>
 
                     <div className="collection-sort">
                         <label>Sort by:</label>
-                        <select>
-                            <option value="/">Featured</option>
+                        <select onChange={handleSortChange}>
+                            <option value="default">Featured</option>
+                            <option value="lowhigh">By Price: Low to High</option>
+                            <option value="highlow">By Price: High to Low</option>
                         </select>
                     </div>
 

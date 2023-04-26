@@ -10,6 +10,7 @@ import Single from './pages/Single';
 import Add from './pages/Add';
 import Employees from './pages/Employees';
 import "./style.scss";
+import PostCheckout from './pages/PostCheckout';
 
 const Layout = () => {
   return (
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/employees",
     element: <Employees />
+  },
+  {
+    path: "/postcheckout",
+    element: <PostCheckout />
   },
 ]);
 
