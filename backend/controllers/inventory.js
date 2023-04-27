@@ -61,7 +61,7 @@ export const addGame = (req, res) => {
 
 export const deleteGame = (req, res) => {
     const q = "SELECT * FROM video_game WHERE sku = ?"
-
+    
     db.query(q, [req.body.sku], (err, data) => {
         if (err) return res.json(err)
         if (data.length === 0) return res.status(409).json("SKU does not exist!");
@@ -71,7 +71,7 @@ export const deleteGame = (req, res) => {
             req.body.sku,
         ]
 
-        db.query(q3, val3, (err, data) => {
+        db.query(q3, [val3], (err, data) => {
             if (err) return res.json(err)
             return res.status(200).json("Game has been deleted!");
         })
