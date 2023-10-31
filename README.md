@@ -1,6 +1,6 @@
 # GameStore-Website
 Final project for database design. Full backend+frontend for a video game store with user creation support and cart management + checkout.
-Different level of users have different abilities, eg: owner can do everything, employees can add or remove games from the system, customers can add to cart and checkout.
+Different level of users have different abilities, eg: owner can add employees, employees can add or remove games from the system, and customers can add to cart and checkout, while guests can visit the website, but are not able to use the cart/checkout until logging in with an account.
 User validation uses encrypted passwords.
 
 Example home page
